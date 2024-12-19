@@ -11,123 +11,144 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #121212; /* Fundo escuro */
-            color: #f5f5f5; /* Texto claro */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
             padding: 0;
+            background-color: #f0f8ff; /* Fundo azul claro */
+            color: #343a40; /* Texto escuro */
+            height: 80vh;
         }
 
-        .container {
-            background: linear-gradient(135deg, #16213e, #1a1a2e); /* Gradiente no fundo */
-            border: none;
-            border-radius: 15px;
+        header {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
             padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            width: 95%; /* Ajusta para ocupar quase toda a largura da tela no mobile */
-            max-width: 1200px; /* Define o limite para telas grandes */
-            min-height: 75%; /* O container ocupa quase toda a altura da tela */
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .main-content {
             display: flex;
-            flex-direction: column; /* Organização em coluna */
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between; /* Espaço uniforme entre os elementos */
-            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            height: 100%;
         }
 
-        .content {
-            text-align: center; /* Centraliza o texto no mobile */
-        }
-
-        .gif {
-            border-radius: 15px;
-            background: url('{{ url_for("static", filename="imagem.gif") }}') no-repeat center center; /* GIF como background */
-            background-size: cover; /* Cobre toda a área da div */
-            width: 100%;
-            flex-grow: 1; /* Ocupa o espaço restante */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-title {
-            font-size: 1.8rem; /* Ajusta o tamanho do título para mobile */
-            font-weight: 600;
+        .text-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            padding: 20px;
             text-align: center;
-            background: linear-gradient(45deg, #ffffff, #d9d9d9); /* Gradiente de tons de branco */
-            -webkit-background-clip: text; /* Clipa o gradiente ao texto */
-            -webkit-text-fill-color: transparent; /* Torna o fundo do texto transparente */
-            text-fill-color: transparent; /* Compatibilidade com outros navegadores */
-            margin-bottom: 10px;
         }
 
-        .subheading {
-            font-size: 1rem; /* Ajusta o tamanho do subtítulo */
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: #f5f5f5;
-            text-align: center;
+        .text-section h2 {
+            font-size: 2rem;
+            color: #007bff;
+        }
+
+        .text-section p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         .btn-custom {
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 1rem;
             border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #6a11cb, #2575fc); /* Gradiente de cores */
+            background: #6a11cb;
             color: white;
             border: none;
-            transition: background 0.3s ease, transform 0.3s ease;
-            margin-bottom: 10px;
-            width: 100%; /* Botões ocupam toda a largura no mobile */
-            max-width: 300px; /* Limite para telas maiores */
+            transition: transform 0.3s;
         }
 
         .btn-custom:hover {
-            background: linear-gradient(45deg, #2575fc, #6a11cb); /* Inverter gradiente no hover */
-            transform: translateY(-5px);
+            transform: scale(1.1);
+            background: #2575fc;
         }
 
-        @media (min-width: 768px) {
-            .container {
-                flex-direction: row; /* Organização lado a lado para telas grandes */
-                height: auto; /* Remove restrição de altura em telas grandes */
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
             }
 
-            .content {
-                flex: 1;
-                padding-right: 20px;
+            .text-section h2 {
+                font-size: 1.5rem;
             }
 
-            .gif {
-                flex: 1;
-                height: 400px; /* Define altura maior para telas grandes */
-            }
-
-            .card-title {
-                font-size: 2.5rem; /* Título maior em telas grandes */
-            }
-
-            .subheading {
-                font-size: 1.2rem; /* Subtítulo maior em telas grandes */
+            .text-section p {
+                font-size: 1rem;
             }
 
             .btn-custom {
-                width: auto; /* Botões ajustam-se automaticamente em telas grandes */
+                font-size: 0.9rem;
+                padding: 8px 16px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="content">
-            <h1 class="card-title">Bem-vindo ao Sistema!</h1>
-            <p class="subheading">Explore as funcionalidades e gerencie seus dados com facilidade.</p>
-            <a href="{{ url_for('login') }}" class="btn btn-custom">Entrar</a>
-            <a href="{{ url_for('register') }}" class="btn btn-custom">Registrar-se</a>
+    <header>
+        <h1>Bem-vindo ao listador de usuario 2000</h1>
+    </header>
+
+    <div class="main-content">
+        <div class="text-section">
+            <h2>Esse é o melhor gerenciador de usuarios da atualidade! </h2>
+            <p>Acesse o sistema para explorar as funcionalidades e gerenciar suas informações de forma simples e intuitiva.</p>
+            <p>Aumenta em 90% a produtividade da sua empresa!</p>
+            <div class="buttons">
+                <a href="{{ url_for('login') }}" class="btn btn-custom">Entrar</a>
+                <a href="{{ url_for('register') }}" class="btn btn-custom">Registrar-se</a>
+            </div>
         </div>
-        <div class="gif"></div>
+
+        <div class="image-section">
+            <img src="{{ url_for('static', filename='image.gif') }}" alt="Ilustração animada">
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
